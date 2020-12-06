@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Sean</title>
+    <link>http://localhost:1313/post/</link>
+    <description>Recent content in Posts on Sean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The fast food capital</title>
+      <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>
+      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</guid>
+      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other.
+Getting dataThe Food Standards Agency are responsible for inspecting food businesses in the UK. FSA are a very open organisation. Their board meetings are open to the public, internal strategy documents are available for anyone to read, and they publish their data.</description>
+    </item>
+    
+    <item>
+      <title>Lets make a map in R</title>
+      <link>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</guid>
+      <description>There’s a lot of really great posts on mapping in R. This one from the Trafford Data Lab is the one I used when I was starting out in R, and is the post I recommend to anyone interested in making maps with R.
+Most posts use ggplot2 to make maps. Here, we’re going to use the tmap package. tmap makes thematic maps - which is a fancy way of saying ‘plotting data on a map’.</description>
+    </item>
+    
+    <item>
+      <title>Random forests in pictures</title>
+      <link>http://localhost:1313/post/2020-11-16-random-forests-in-pictures/</link>
+      <pubDate>Sun, 03 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-11-16-random-forests-in-pictures/</guid>
+      <description>Random forests are great. They’re easy to train, they don’t care about outliers, and they have very few assumptions. You can use random forests for almost any problem you come across and, chances are, you’ll end up with a fairly decent predictive model.
+But what do random forests actually do? You might have heard something about random forests being “an average of decision trees”, but what does that mean?</description>
+    </item>
+    
+    <item>
+      <title>Museums, antisocial behaviour, and DAGs</title>
+      <link>http://localhost:1313/post/2020-12-06-museums-antisocial-behaviour-and-dags/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-12-06-museums-antisocial-behaviour-and-dags/</guid>
+      <description>If you’ve ever used linear regression, you’ve probably came across statements like “a one unit increase in \(x\) causes a \(\beta\) increase in \(y\)”. But is this always the right thing to say? How can you be sure that changing \(x\) causes \(y\) to change?
+A few months ago I went on a two day “causal inference workshop”, ran by the fabulous Economics Professor Scott Cunningham. I have zero background in economics, but Scott is a great teacher and I learnt a lot from the workshop (even if it did feel like drinking from a firehose at times!</description>
+    </item>
+    
+  </channel>
+</rss>
