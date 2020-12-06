@@ -148,7 +148,7 @@ If there is an arrow connecting two nodes together, we say that there is a direc
 * A $\to$ B
 * A $\to$ C
 * Y $\to$ X
-* Z $to$ X
+* Z $\to$ X
 
 Notice that there is no direct path between B & C, but there is a way you can get from B to C (by going B $\to$ A $\to$ C). This indirect path is called a *backdoor path*. Backdoors can introduce bias in your model, so you need to make sure that you “shut” all the backdoors during the model stage.
 
@@ -254,7 +254,7 @@ p$paths[!p$open]
 [1] "D -> O <- A -> W"      "D <- F -> O <- A -> W"
 ```
 
-We need to close the open paths `D -> O -> W` and `D <- F -> O -> W`. The easiest way to do this is to control on occupation `O`. But `O` is a collider on the closed paths `D -> O <- A -> W` and `D <- F -> O <- A -> W`. Including O in the model will close the two open paths, but also open the two closed paths! We need to add another control in to close these newly opened backdoor paths, and we can do that by also controlling on `A`.
+We need to close the open paths `D -> O -> W` and `D <- F -> O -> W`. The easiest way to do this is to control on occupation `O`. But `O` is a collider on the closed paths `D -> O <- A -> W` and `D <- F -> O <- A -> W`. Including `O` in the model will close the two open paths, but also open the two closed paths! We need to add another control in to close these newly opened backdoor paths, and we can do that by also controlling on `A`.
 
 This tells us the correct model specification to use. We should run `wage ~ discrimination + occupation + ability`. Anything else will be biased and wrong.
 

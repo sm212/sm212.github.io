@@ -75,7 +75,7 @@ A few months ago I went on a two day “causal inference workshop”, ran by the
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">Blog</a>
+    <a href="/" class="logo">Sean</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -95,7 +95,7 @@ A few months ago I went on a two day “causal inference workshop”, ran by the
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">Blog</a>
+  <a href="/" class="logo">Sean</a>
 </div>
 
 <nav class="site-navbar">
@@ -228,7 +228,7 @@ F-statistic: 9.089 on 2 and 30 DF,  p-value: 0.0008204</code></pre>
 <li>A <span class="math inline">\(\to\)</span> B</li>
 <li>A <span class="math inline">\(\to\)</span> C</li>
 <li>Y <span class="math inline">\(\to\)</span> X</li>
-<li>Z <span class="math inline">\(to\)</span> X</li>
+<li>Z <span class="math inline">\(\to\)</span> X</li>
 </ul>
 <p>Notice that there is no direct path between B &amp; C, but there is a way you can get from B to C (by going B <span class="math inline">\(\to\)</span> A <span class="math inline">\(\to\)</span> C). This indirect path is called a <em>backdoor path</em>. Backdoors can introduce bias in your model, so you need to make sure that you “shut” all the backdoors during the model stage.</p>
 <p>There are two types of nodes on backdoor paths, colliders and confounders. Node A is an example of a confounder, since it has multiple arrows going out of it. Node X is an example of a collider, since there are multiple arrows “colliding” together at X.</p>
@@ -291,7 +291,7 @@ gender &lt;- dagitty(&#39;dag {
 <p>And which paths are closed:</p>
 <pre><code>p$paths[!p$open]</code></pre>
 <pre><code>[1] &quot;D -&gt; O &lt;- A -&gt; W&quot;      &quot;D &lt;- F -&gt; O &lt;- A -&gt; W&quot;</code></pre>
-<p>We need to close the open paths <code>D -&gt; O -&gt; W</code> and <code>D &lt;- F -&gt; O -&gt; W</code>. The easiest way to do this is to control on occupation <code>O</code>. But <code>O</code> is a collider on the closed paths <code>D -&gt; O &lt;- A -&gt; W</code> and <code>D &lt;- F -&gt; O &lt;- A -&gt; W</code>. Including O in the model will close the two open paths, but also open the two closed paths! We need to add another control in to close these newly opened backdoor paths, and we can do that by also controlling on <code>A</code>.</p>
+<p>We need to close the open paths <code>D -&gt; O -&gt; W</code> and <code>D &lt;- F -&gt; O -&gt; W</code>. The easiest way to do this is to control on occupation <code>O</code>. But <code>O</code> is a collider on the closed paths <code>D -&gt; O &lt;- A -&gt; W</code> and <code>D &lt;- F -&gt; O &lt;- A -&gt; W</code>. Including <code>O</code> in the model will close the two open paths, but also open the two closed paths! We need to add another control in to close these newly opened backdoor paths, and we can do that by also controlling on <code>A</code>.</p>
 <p>This tells us the correct model specification to use. We should run <code>wage ~ discrimination + occupation + ability</code>. Anything else will be biased and wrong.</p>
 </div>
 <div id="a-simulation" class="section level1">
