@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>maps on Sean</title>
+    <link>http://localhost:1313/categories/maps/</link>
+    <description>Recent content in maps on Sean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/maps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lets make a map in R</title>
+      <link>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</link>
+      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</guid>
+      <description>There’s a lot of really great posts on mapping in R. This one from the Trafford Data Lab is the one I used when I was starting out in R, and is the post I recommend to anyone interested in making maps with R.
+Most posts use ggplot2 to make maps. Here, we’re going to use the tmap package. tmap makes thematic maps - which is a fancy way of saying ‘plotting data on a map’.</description>
+    </item>
+    
+  </channel>
+</rss>

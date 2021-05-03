@@ -3,10 +3,10 @@ title: Lets make a map in R
 author: ~
 date: '2020-07-13'
 slug: []
-categories: []
+categories: ['notes', 'tutorial', 'maps']
 tags: []
 lastmod: '2020-11-18T20:57:33Z'
-keywords: ['notes', 'tutorial', 'maps']
+keywords: []
 description: ''
 comment: no
 postMetaInFooter: no

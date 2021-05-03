@@ -3,8 +3,8 @@ title: The fast food capital
 author: ~
 date: '2020-11-16'
 slug: []
-categories: []
-tags: ['projects', 'scraping']
+categories: ['projects', 'scraping']
+tags: []
 lastmod: '2020-11-16T20:39:48Z'
 keywords: []
 description: 'Test description'

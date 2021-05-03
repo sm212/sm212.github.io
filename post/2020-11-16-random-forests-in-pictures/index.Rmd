@@ -3,8 +3,8 @@ title: Random forests in pictures
 author: ~
 date: '2020-05-03'
 slug: []
-categories: []
-tags: ['notes', 'python', 'ml']
+categories: ['notes', 'python', 'ml']
+tags: []
 lastmod: '2020-11-16T22:03:37Z'
 keywords: []
 description: ''
