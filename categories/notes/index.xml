@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>notes on Sean</title>
+    <link>http://localhost:1313/categories/notes/</link>
+    <description>Recent content in notes on Sean</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 23 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/notes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Museums, antisocial behaviour, and DAGs</title>
+      <link>http://localhost:1313/post/2020-12-06-museums-antisocial-behaviour-and-dags/</link>
+      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-12-06-museums-antisocial-behaviour-and-dags/</guid>
+      <description>If you’ve ever used linear regression, you’ve probably came across statements like “a one unit increase in \(x\) causes a \(\beta\) increase in \(y\)”. But is this always the right thing to say? How can you be sure that changing \(x\) causes \(y\) to change?
+A few months ago I went on a two day “causal inference workshop”, ran by the fabulous Economics Professor Scott Cunningham. I have zero background in economics, but Scott is a great teacher and I learnt a lot from the workshop (even if it did feel like drinking from a firehose at times!</description>
+    </item>
+    
+  </channel>
+</rss>

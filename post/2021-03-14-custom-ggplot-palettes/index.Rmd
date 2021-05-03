@@ -1,0 +1,27 @@
+---
+title: Custom ggplot palettes
+author: ~
+date: '2021-03-14'
+slug: []
+categories: []
+tags: []
+lastmod: '2021-03-14T21:46:34Z'
+keywords: []
+description: ''
+comment: no
+postMetaInFooter: no
+hiddenFromHomePage: no
+contentCopyright: no
+reward: no
+mathjax: yes
+mathjaxEnableSingleDollar: no
+mathjaxEnableAutoNumber: no
+hideHeaderAndFooter: no
+flowchartDiagrams:
+  enable: no
+  options: ''
+sequenceDiagrams:
+  enable: no
+  options: ''
+---
+

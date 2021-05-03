@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Fast fuzzy matching - Sean</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="olOwOlo" /><meta name="description" content="Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp;amp; bobs. The usual way to deal with this is fuzzy matching.
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’." /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.78.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/2021-01-16-fast-fuzzy-matching/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.c7bc1becf36bcf6a9ebd25d2947e43a2eb745ddb0c9a32b43126fd7fa460c351.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Fast fuzzy matching" />
+<meta property="og:description" content="Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp; bobs. The usual way to deal with this is fuzzy matching.
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/2021-01-16-fast-fuzzy-matching/" />
+<meta property="article:published_time" content="2021-01-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-16T22:03:37+00:00" />
+<meta itemprop="name" content="Fast fuzzy matching">
+<meta itemprop="description" content="Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp; bobs. The usual way to deal with this is fuzzy matching.
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’.">
+<meta itemprop="datePublished" content="2021-01-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-16T22:03:37+00:00" />
+<meta itemprop="wordCount" content="549">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fast fuzzy matching"/>
+<meta name="twitter:description" content="Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp; bobs. The usual way to deal with this is fuzzy matching.
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’."/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">🐍</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">🐍</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Fast fuzzy matching</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2021-01-10 </span>
+        
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      
+<script src="index_files/header-attrs/header-attrs.js"></script>
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<p>Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp; bobs. The usual way to deal with this is <em>fuzzy matching</em>.<br />
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’. The idea is that you only need to do 1 edit to change ‘sean’ into ‘seam’ (switch the letter n to m) but you need to do 2 changes to get to ‘seed’ (switch a to e, and n to d), so the word ‘seam’ is <em>closer</em> to ‘sean’ than the word ‘seed’.</p>
+<div id="the-problem-with-fuzzy-matching" class="section level1">
+<h1>The problem with fuzzy matching</h1>
+<p>Fuzzy matching gets very slow, very quick. To see why, imagine you’ve got a list of 100 names (possibly misspelled), and you want to find the closest match in a list of 1,000 clean names (no typos at all). You’d need to compute the distance between each of the 100 names &amp; each of the 1,000 clean names - so 100,000 comparisons total. If it takes 0.01 seconds to compute the distance between 2 strings, then you’d be waiting for about a minute for the matching to finish.<br />
+If your lists get bigger, then the time taken to do the match gets longer (if you want to be fancy the time taken is <span class="math inline">\(\mathcal{O}(nm)\)</span>, where <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are the size of your lists). Increase your list from 100 to 1,000 and you’ll be waiting for about 16 minutes, double the size of the clean names to 2,000 and you’ll be waiting for about 30 minutes.</p>
+<p>Most day-to-day datasets these days have way more than a few thousand rows, and usually you don’t have the time to sit around for a couple of hours waiting for code to run.</p>
+</div>
+<div id="a-different-approach" class="section level1">
+<h1>A different approach</h1>
+<p>Let’s looks at something completely different - vectors. In the picture below you can tell that the red vector is closer to the purple vector compared to the green one. If we’re able to somehow turn our strings into vectors then we’d be able to compute <em>vector distances</em>, instead of string distances.</p>
+<p><img src="../img/vectors.PNG" /></p>
+<p>This sounds like a little change, but switching to vectors gives you a huge speed up for free. This is because computing distances between vectors is done by <em>matrix multiplication</em> - which is really fast.</p>
+<p>Here’s a schematic of how to match vectors. First you turn your list of ‘clean’ strings into vectors and put them in a matrix. Then you inner product the string you want to match with the clean string matrix, which will give you a vector of distances. Next you find the position of the smallest distance in this vector and use that to index the list of clean strings:</p>
+<p><img src="../img/matrix_match.png" /></p>
+<p>Looking at it this way, the problem becomes linear - you just do matrix multiplication (on a sparse matrix, <span class="math inline">\(\mathcal{O}(n)\)</span>), then find the smallest element of a vector (which is <span class="math inline">\(\mathcal{O}(n)\)</span>), then index a list (which is <span class="math inline">\(\mathcal{O}(1)\)</span>)!</p>
+</div>
+<div id="implementation" class="section level1">
+<h1>Implementation</h1>
+<p>There’s a couple of bits to do:</p>
+<ul>
+<li>Convert strings into vectors</li>
+<li>Make the lookup matrix</li>
+<li>Find the smallest distance, and return the corresponding string</li>
+</ul>
+<p>[FIND SOME DATA TO WORK ON]</p>
+<div id="converting-strings-to-vectors" class="section level2">
+<h2>Converting strings to vectors</h2>
+</div>
+</div>
+
+    </div>
+
+    
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/2021-03-14-custom-ggplot-palettes/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Custom ggplot palettes</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/2020-11-16-the-fast-food-capital/">
+            <span class="next-text nav-default">The fast food capital</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.c12618f9a600c40bd024996677e951e64d3487006775aeb22e200c990006c5c7.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
