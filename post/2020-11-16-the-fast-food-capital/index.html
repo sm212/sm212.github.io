@@ -71,7 +71,7 @@
 <body>
   <div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/" class="logo">~</a>
+    <a href="/" class="logo">🐍</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -83,6 +83,8 @@
   <ul class="mobile-menu-list">
     <a href="/">
         <li class="mobile-menu-item">Home</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
       </a><a href="/about/">
         <li class="mobile-menu-item">About</li>
       </a>
@@ -91,13 +93,15 @@
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
-  <a href="/" class="logo">~</a>
+  <a href="/" class="logo">🐍</a>
 </div>
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
     <li class="menu-item">
         <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
       </li><li class="menu-item">
         <a class="menu-item-link" href="/about/">About</a>
       </li>
@@ -682,7 +686,7 @@ To present this in a nicer format, we’re going to figure out which MSOA each p
 top10 = st_as_sf(top10, coords = c(&#39;X&#39;, &#39;Y&#39;)) %&gt;%
   st_set_crs(29902)
 
-msoa_shp = read_sf(&#39;https://opendata.arcgis.com/datasets/5d4e4cc075ef4a40acbe6e50735451ef_0.geojson&#39;) %&gt;%
+msoa_shp = read_sf(&#39;https://opendata.arcgis.com/datasets/1382f390c22f4bed89ce11f2a9207ff0_0.geojson&#39;) %&gt;%
   st_transform(29902)
 
 top10 = top10 %&gt;%
@@ -772,7 +776,11 @@ ggplot() +
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/2021-01-16-fast-fuzzy-matching/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Fast fuzzy matching</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
         <a class="next" href="/post/2020-11-18-lets-make-a-map-in-r/">
             <span class="next-text nav-default">Lets make a map in R</span>
             <span class="next-text nav-mobile">Next</span>
@@ -809,7 +817,7 @@ ggplot() +
   <span class="copyright-year">
     &copy; 
     2017 - 
-    2020<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
+    2021<span class="heart"><i class="iconfont icon-heart"></i></span><span>olOwOlo</span>
   </span>
 </div>
 

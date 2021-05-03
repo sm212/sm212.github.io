@@ -4,7 +4,7 @@ author: ~
 date: '2020-11-16'
 slug: []
 categories: []
-tags: []
+tags: ['projects', 'scraping']
 lastmod: '2020-11-16T20:39:48Z'
 keywords: []
 description: 'Test description'
@@ -30,7 +30,7 @@ sequenceDiagrams:
 knitr::opts_chunk$set(warning = F, message = F)
 ```
 
-If you love fast food, where should you live? You'd want to live somewhere with *lots of takeaways*, ideally all *fairly close to each other*.
+If you love fast food, where should you live? You'd want to live somewhere with *lots of takeaways*, ideally all *fairly close to each other*.    
 
 ![](../img/food.png)
 
@@ -219,7 +219,7 @@ We're looking for somewhere with lots of takeaways, all fairly close to each oth
 We're going to need the area of each local authority before we can compute this. Computing areas requires us to work with *shapefiles* - specific data formats which encode geographic information. Shapefiles for most of the UK are available from the ONS geoportal, and the one we want is the [2020 local authority boundaries](https://geoportal.statistics.gov.uk/datasets/local-authority-districts-may-2020-boundaries-uk-bfe). If you click that link there's a little API button, you can copy the geoJSON link & pass it directly to `read_sf` (saves you messing about downloading & extracting stuff):
 
 ```{r}
-la_shp = read_sf('https://bit.ly/3p6ibF1')
+la_shp = read_sf('https://opendata.arcgis.com/datasets/69dc11c7386943b4ad8893c45648b1e1_0.geojson')
 ```
 
 Areas can be calculated using the `st_area` function from the `sf` package:
@@ -452,7 +452,7 @@ msoa_names = read_csv('https://visual.parliament.uk/msoanames/static/MSOA-Names-
 top10 = st_as_sf(top10, coords = c('X', 'Y')) %>%
   st_set_crs(29902)
 
-msoa_shp = read_sf('https://opendata.arcgis.com/datasets/5d4e4cc075ef4a40acbe6e50735451ef_0.geojson') %>%
+msoa_shp = read_sf('https://opendata.arcgis.com/datasets/1382f390c22f4bed89ce11f2a9207ff0_0.geojson') %>%
   st_transform(29902)
 
 top10 = top10 %>%

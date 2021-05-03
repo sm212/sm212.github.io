@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Sean</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fast fuzzy matching</title>
+      <link>http://localhost:1313/post/2021-01-16-fast-fuzzy-matching/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2021-01-16-fast-fuzzy-matching/</guid>
+      <description>Working with text is tricky. Tiny little typos - like spelling my name as ‘Seam’ instead of ‘Sean’ - can mess up any joins, aggregations, and other analytical bits &amp;amp; bobs. The usual way to deal with this is fuzzy matching.
+Fuzzy matching works by matching a word to the next ‘closest’ word. For example, if you tried to match ‘sean’ to either ‘seam’ or ‘seed’, it’ll match to ‘seam’.</description>
+    </item>
+    
     <item>
       <title>The fast food capital</title>
       <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>

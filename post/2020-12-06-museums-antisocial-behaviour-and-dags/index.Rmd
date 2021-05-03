@@ -3,7 +3,7 @@ title: Museums, antisocial behaviour, and DAGs
 author: ~
 date: '2020-02-23'
 slug: []
-categories: []
+categories: ['notes', 'causal inference', 'stats']
 tags: []
 lastmod: '2020-11-18T20:57:33Z'
 keywords: []
