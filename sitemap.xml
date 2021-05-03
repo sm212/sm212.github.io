@@ -9,6 +9,27 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/2021-03-14-custom-ggplot-palettes/</loc>
+    <lastmod>2021-03-14T21:46:34+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2021-03-14T21:46:34+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2021-03-14T21:46:34+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/post/2021-01-16-fast-fuzzy-matching/</loc>
     <lastmod>2021-01-16T22:03:37+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,15 +37,22 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2021-01-16T22:03:37+00:00</lastmod>
+    <loc>http://localhost:1313/tags/projects/</loc>
+    <lastmod>2020-11-16T20:39:48+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/</loc>
-    <lastmod>2021-01-16T22:03:37+00:00</lastmod>
+    <loc>http://localhost:1313/tags/scraping/</loc>
+    <lastmod>2020-11-16T20:39:48+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2020-11-16T22:03:37+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -66,13 +94,6 @@
   
   <url>
     <loc>http://localhost:1313/post/2020-11-16-random-forests-in-pictures/</loc>
-    <lastmod>2020-11-16T22:03:37+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2020-11-16T22:03:37+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

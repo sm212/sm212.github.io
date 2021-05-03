@@ -53,7 +53,7 @@
 
 
 
-<meta itemprop="keywords" content="" />
+<meta itemprop="keywords" content="projects,scraping," />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The fast food capital"/>
 <meta name="twitter:description" content="Test description"/>
@@ -415,7 +415,7 @@ This new method finds 98.03% of all KFCs, and 97.33% of all McDonalds, so we can
 <h2>Takeaway density</h2>
 <p>We’re looking for somewhere with lots of takeaways, all fairly close to each other. The easiest way of measuring this is to count the total number of takeaways in each local authority, then divide by the size of the local authority. This will give the <em>takeaway density</em> - the number of takeaways per area.</p>
 <p>We’re going to need the area of each local authority before we can compute this. Computing areas requires us to work with <em>shapefiles</em> - specific data formats which encode geographic information. Shapefiles for most of the UK are available from the ONS geoportal, and the one we want is the <a href="https://geoportal.statistics.gov.uk/datasets/local-authority-districts-may-2020-boundaries-uk-bfe">2020 local authority boundaries</a>. If you click that link there’s a little API button, you can copy the geoJSON link &amp; pass it directly to <code>read_sf</code> (saves you messing about downloading &amp; extracting stuff):</p>
-<pre class="r"><code>la_shp = read_sf(&#39;https://bit.ly/3p6ibF1&#39;)</code></pre>
+<pre class="r"><code>la_shp = read_sf(&#39;https://opendata.arcgis.com/datasets/69dc11c7386943b4ad8893c45648b1e1_0.geojson&#39;)</code></pre>
 <p>Areas can be calculated using the <code>st_area</code> function from the <code>sf</code> package:</p>
 <pre class="r"><code>areas = la_shp %&gt;%
   mutate(area = st_area(la_shp)) %&gt;%
@@ -713,7 +713,7 @@ top10 %&gt;%
 <pre class="r"><code>tempf = tempfile(fileext = &#39;.zip&#39;)
 tempd = tempdir()
 
-g = GET(&#39;http://sedsh127.sedsh.gov.uk/Atom_data/ScotGov/ZippedShapefiles/SG_DataZoneBdry_2011.zip&#39;, write_disk(tempf))
+g = GET(&#39;https://maps.gov.scot/ATOM/shapefiles/SG_DataZoneBdry_2011.zip&#39;, write_disk(tempf))
 unzip(tempf, exdir = tempd)
 
 fpath = paste0(tempd, &#39;/SG_DataZone_Bdry_2011.shp&#39;)
@@ -774,7 +774,10 @@ ggplot() +
 
     
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/projects/">projects</a>
+          <a href="/tags/scraping/">scraping</a>
+          </div>
       <nav class="post-nav">
         <a class="prev" href="/post/2021-01-16-fast-fuzzy-matching/">
             <i class="iconfont icon-left"></i>
