@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About</title>
       <link>http://localhost:1313/about/</link>
@@ -15,16 +15,6 @@
       <guid>http://localhost:1313/about/</guid>
       <description>Hi I&amp;rsquo;m Sean. I&amp;rsquo;m a data scientist currently working in public health at Essex County Council. Before that I worked as a statistician at the Department of Health &amp;amp; Social Care, and before that I was a data scientist working in marketing at We Buy Any Car.
 This site is mostly just a place for me to put notes or writeups of any projects I&amp;rsquo;ve been working on. I mostly use R, and I try to make all the stuff on here reproducible - so you should (hopefully!</description>
-    </item>
-    
-    <item>
-      <title>The fast food capital</title>
-      <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>
-      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</guid>
-      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other.
-Getting dataThe Food Standards Agency are responsible for inspecting food businesses in the UK. FSA are a very open organisation. Their board meetings are open to the public, internal strategy documents are available for anyone to read, and they publish their data.</description>
     </item>
     
     <item>

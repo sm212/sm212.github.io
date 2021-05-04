@@ -23,34 +23,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2020-11-18T20:57:33+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/categories/projects/</loc>
-    <lastmod>2020-11-16T20:39:48+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/categories/scraping/</loc>
-    <lastmod>2020-11-16T20:39:48+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</loc>
-    <lastmod>2020-11-16T20:39:48+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</loc>
     <lastmod>2020-11-18T20:57:33+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -66,6 +38,13 @@
   
   <url>
     <loc>http://localhost:1313/categories/notes/</loc>
+    <lastmod>2020-11-18T20:57:33+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
     <lastmod>2020-11-18T20:57:33+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

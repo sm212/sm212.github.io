@@ -6,17 +6,7 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>The fast food capital</title>
-      <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>
-      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</guid>
-      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other.
-Getting dataThe Food Standards Agency are responsible for inspecting food businesses in the UK. FSA are a very open organisation. Their board meetings are open to the public, internal strategy documents are available for anyone to read, and they publish their data.</description>
-    </item>
-    
+    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lets make a map in R</title>
       <link>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</link>
