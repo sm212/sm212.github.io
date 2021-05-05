@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scraping on Even - A super concise theme for Hugo</title>
+    <title>scraping on Sean</title>
     <link>http://localhost:1313/categories/scraping/</link>
-    <description>Recent content in scraping on Even - A super concise theme for Hugo</description>
+    <description>Recent content in scraping on Sean</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/scraping/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/scraping/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The fast food capital</title>
       <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>
-      <pubDate>Mon, 16 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</guid>
-      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other.
-Getting dataThe Food Standards Agency are responsible for inspecting food businesses in the UK. FSA are a very open organisation. Their board meetings are open to the public, internal strategy documents are available for anyone to read, and they publish their data.</description>
+      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other. Lucky for you, there’s a fair bit of choice! If you want to live in England then London’s you’re best bet, or you can go to the midlands (Birmingham) or up North (Blackpool or Leeds). If you’re looking for a place to live in Wales, Bute Park in Cardiff has loads of takeaways, and for Scotland you can’t go wrong with Central Glasgow:</description>
     </item>
     
   </channel>

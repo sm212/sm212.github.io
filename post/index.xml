@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Even - A super concise theme for Hugo</title>
+    <title>Posts on Sean</title>
     <link>http://localhost:1313/post/</link>
-    <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
+    <description>Recent content in Posts on Sean</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 13 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The fast food capital</title>
+      <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</guid>
+      <description>If you love fast food, where should you live? You’d want to live somewhere with lots of takeaways, ideally all fairly close to each other. Lucky for you, there’s a fair bit of choice! If you want to live in England then London’s you’re best bet, or you can go to the midlands (Birmingham) or up North (Blackpool or Leeds). If you’re looking for a place to live in Wales, Bute Park in Cardiff has loads of takeaways, and for Scotland you can’t go wrong with Central Glasgow:</description>
+    </item>
+    
     <item>
       <title>Lets make a map in R</title>
       <link>http://localhost:1313/post/2020-11-18-lets-make-a-map-in-r/</link>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>The fast food capital - Even - A super concise theme for Hugo</title>
+  <title>The fast food capital - Sean</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -43,13 +43,13 @@
 <meta property="og:description" content="Test description" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/2020-11-16-the-fast-food-capital/" />
-<meta property="article:published_time" content="2020-11-16T00:00:00+00:00" />
+<meta property="article:published_time" content="2020-11-17T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-11-16T20:39:48+00:00" />
 <meta itemprop="name" content="The fast food capital">
 <meta itemprop="description" content="Test description">
-<meta itemprop="datePublished" content="2020-11-16T00:00:00+00:00" />
+<meta itemprop="datePublished" content="2020-11-17T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2020-11-16T20:39:48+00:00" />
-<meta itemprop="wordCount" content="2578">
+<meta itemprop="wordCount" content="2622">
 
 
 
@@ -128,7 +128,7 @@
       <h1 class="post-title">The fast food capital</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-11-16 </span>
+        <span class="post-time"> 2020-11-17 </span>
         <div class="post-category">
             <a href="/categories/projects/"> projects </a>
             <a href="/categories/scraping/"> scraping </a>
@@ -150,8 +150,9 @@
 <script src="index_files/anchor-sections/anchor-sections.js"></script>
 
 
-<p>If you love fast food, where should you live? You’d want to live somewhere with <em>lots of takeaways</em>, ideally all <em>fairly close to each other</em>.</p>
+<p>If you love fast food, where should you live? You’d want to live somewhere with <em>lots of takeaways</em>, ideally all <em>fairly close to each other</em>. Lucky for you, there’s a fair bit of choice! If you want to live in England then London’s you’re best bet, or you can go to the midlands (Birmingham) or up North (Blackpool or Leeds). If you’re looking for a place to live in Wales, Bute Park in Cardiff has loads of takeaways, and for Scotland you can’t go wrong with Central Glasgow:</p>
 <p><img src="../img/food.png" /></p>
+<p>The rest of this post is going to walk through the steps for the analysis - we’re going to scrape some info from the Food Standards Agency, and do a bit of geospatial work to figure out where the fast food hotspots are.</p>
 <div id="getting-data" class="section level1">
 <h1>Getting data</h1>
 <p>The <a href="https://www.food.gov.uk/about-us/who-we-are?navref=main">Food Standards Agency</a> are responsible for inspecting food businesses in the UK. FSA are a very open organisation. Their board meetings are <a href="https://www.food.gov.uk/about-us/fsa-board-meeting-june-2020">open to the public</a>, internal strategy documents are available for <a href="https://www.food.gov.uk/sites/default/files/media/document/Food-Standards-Agency-Strategy%20FINAL.pdf">anyone to read</a>, and they <a href="https://data.food.gov.uk/catalog">publish their data</a>. They publish information on <a href="https://ratings.food.gov.uk/open-data/en-GB">every inspection ever done</a>, and they update the data every day. We’re going to use these records to find the fast food capital.</p>
@@ -467,8 +468,8 @@ ggplot() +
   geom_sf(data = salford) +
   geom_sf(data = buffers, alpha = 0.2, fill = &#39;purple&#39;) +
   geom_sf(data = pnts)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" width="672" />
-<code>st_buffer</code> will use the coordinate system of the shapefile to draw the buffer. Our shapefile uses long/lat to measure distance, which is a bit weird to work with. The line <code>st_transfrom(29902)</code> transforms the shapefile into a coordinate system which measures distances in meters.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><code>st_buffer</code> will use the coordinate system of the shapefile to draw the buffer. Our shapefile uses long/lat to measure distance, which is a bit weird to work with. The line <code>st_transfrom(29902)</code> transforms the shapefile into a coordinate system which measures distances in meters.</p>
 <p>Next we need to see how many takeaways are inside this buffer. This is done by counting how many points <em>intersect</em> the buffer. The <code>sf</code> package has a <code>st_intersection</code> function which will calculate this for you:</p>
 <pre class="r"><code># Convert takeaways to a simple features object, with the same CRS as the
 # shapefile
@@ -482,8 +483,8 @@ salford_takeaways = takeaways %&gt;%
 # Count how many points are inside the buffer
 in_buffer = st_intersection(salford_takeaways, buffers)
 n_in = length(in_buffer)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" width="672" />
-And we’re done! There are 12 takeaways within the purple buffer.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>And we’re done! There are 12 takeaways within the purple buffer.</p>
 <p>Now all we need to do is repeat this for a bunch of different points, all across the UK.
 Let’s bundle those previous steps up into a function:</p>
 <pre class="r"><code>nearby_takeaways = function(la_name, shp, df, dist = 1e3){
@@ -708,20 +709,135 @@ top10 = top10 %&gt;%
 
 top10 %&gt;%
   select(`Local Authority` = la, Area = msoa11hclnm, Takeaways = takeaways) %&gt;%
-  st_set_geometry(NULL)</code></pre>
-<pre><code>## # A tibble: 10 x 3
-##    `Local Authority` Area                       Takeaways
-##  * &lt;chr&gt;             &lt;chr&gt;                          &lt;dbl&gt;
-##  1 Camden            Chalk Farm                       215
-##  2 Westminster       Strand, St James &amp; Mayfair       193
-##  3 Hackney           Shoreditch                       189
-##  4 Glasgow City      &lt;NA&gt;                             144
-##  5 Birmingham        Central                          126
-##  6 Liverpool         Central &amp; Islington              122
-##  7 Southwark         Southwark St George&#39;s            110
-##  8 Cardiff           Cathays South &amp; Bute Park        108
-##  9 Leeds             Leeds City Centre                106
-## 10 Blackpool         Central Blackpool                 98</code></pre>
+  st_set_geometry(NULL) %&gt;%
+  kableExtra::kable()</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Local Authority
+</th>
+<th style="text-align:left;">
+Area
+</th>
+<th style="text-align:right;">
+Takeaways
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Camden
+</td>
+<td style="text-align:left;">
+Chalk Farm
+</td>
+<td style="text-align:right;">
+215
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Westminster
+</td>
+<td style="text-align:left;">
+Strand, St James &amp; Mayfair
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hackney
+</td>
+<td style="text-align:left;">
+Shoreditch
+</td>
+<td style="text-align:right;">
+189
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Glasgow City
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Birmingham
+</td>
+<td style="text-align:left;">
+Central
+</td>
+<td style="text-align:right;">
+126
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Liverpool
+</td>
+<td style="text-align:left;">
+Central &amp; Islington
+</td>
+<td style="text-align:right;">
+122
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Southwark
+</td>
+<td style="text-align:left;">
+Southwark St George’s
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cardiff
+</td>
+<td style="text-align:left;">
+Cathays South &amp; Bute Park
+</td>
+<td style="text-align:right;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leeds
+</td>
+<td style="text-align:left;">
+Leeds City Centre
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blackpool
+</td>
+<td style="text-align:left;">
+Central Blackpool
+</td>
+<td style="text-align:right;">
+98
+</td>
+</tr>
+</tbody>
+</table>
 <p>Glasgow doesn’t have a nice name - this is because MSOAs are based on the ONS census which covers England &amp; Wales, there is a separate Scottish census. The Scottish version of MSOAs are datazones, and they all already have nice names. The datazone shapefile is available from the <a href="https://www.spatialdata.gov.scot/geonetwork/srv/eng/catalog.search#/home">ScotGov website</a>. Let’s grab the Scotland shapefile and find the missing name:</p>
 <pre class="r"><code>tempf = tempfile(fileext = &#39;.zip&#39;)
 tempd = tempdir()
@@ -747,20 +863,168 @@ not_missing = top10 %&gt;%
 top10_names = bind_rows(list(missing_name, not_missing)) %&gt;%
   mutate(name = str_replace_all(name, &#39; - .*&#39;, &#39;&#39;))
 
-top10_names</code></pre>
-<pre><code>## # A tibble: 10 x 4
-##    la           takeaways geog_code name                      
-##    &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;                     
-##  1 Glasgow City       144 S01010275 City Centre South         
-##  2 Camden             215 E02000177 Chalk Farm                
-##  3 Westminster        193 E02000977 Strand, St James &amp; Mayfair
-##  4 Hackney            189 E02000371 Shoreditch                
-##  5 Birmingham         126 E02006899 Central                   
-##  6 Liverpool          122 E02006932 Central &amp; Islington       
-##  7 Southwark          110 E02006802 Southwark St George&#39;s     
-##  8 Cardiff            108 W02000398 Cathays South &amp; Bute Park 
-##  9 Leeds              106 E02006875 Leeds City Centre         
-## 10 Blackpool           98 E02002642 Central Blackpool</code></pre>
+top10_names %&gt;%
+  kableExtra::kable()</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+la
+</th>
+<th style="text-align:right;">
+takeaways
+</th>
+<th style="text-align:left;">
+geog_code
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Glasgow City
+</td>
+<td style="text-align:right;">
+144
+</td>
+<td style="text-align:left;">
+S01010275
+</td>
+<td style="text-align:left;">
+City Centre South
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Camden
+</td>
+<td style="text-align:right;">
+215
+</td>
+<td style="text-align:left;">
+E02000177
+</td>
+<td style="text-align:left;">
+Chalk Farm
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Westminster
+</td>
+<td style="text-align:right;">
+193
+</td>
+<td style="text-align:left;">
+E02000977
+</td>
+<td style="text-align:left;">
+Strand, St James &amp; Mayfair
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Hackney
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:left;">
+E02000371
+</td>
+<td style="text-align:left;">
+Shoreditch
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Birmingham
+</td>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:left;">
+E02006899
+</td>
+<td style="text-align:left;">
+Central
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Liverpool
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:left;">
+E02006932
+</td>
+<td style="text-align:left;">
+Central &amp; Islington
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Southwark
+</td>
+<td style="text-align:right;">
+110
+</td>
+<td style="text-align:left;">
+E02006802
+</td>
+<td style="text-align:left;">
+Southwark St George’s
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Cardiff
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:left;">
+W02000398
+</td>
+<td style="text-align:left;">
+Cathays South &amp; Bute Park
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Leeds
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:left;">
+E02006875
+</td>
+<td style="text-align:left;">
+Leeds City Centre
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Blackpool
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+E02002642
+</td>
+<td style="text-align:left;">
+Central Blackpool
+</td>
+</tr>
+</tbody>
+</table>
 <div id="the-map" class="section level3">
 <h3>The map</h3>
 <p>Here’s the full code to make the map at the top of the post. I find it’s way easier to save the plot (with no annotations) on, then add the annotations by hand:</p>
