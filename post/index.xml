@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Sean</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simulating for power analysis</title>
+      <link>http://localhost:1313/post/2021-05-05-simulating-for-power-analysis/</link>
+      <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/2021-05-05-simulating-for-power-analysis/</guid>
+      <description>I’ve been trying to get my head around power analysis recently. I have some very hazy memories of trying to do power analysis back in uni, where it was treated as some weird step you need to do before any lab work. I remember a bunch of weird formulas &amp;amp; feeling very confused the whole time, and I’ve more or less avoided it ever since.
+There’s a bunch of papers recently out which show how to use simulations for power analysis.</description>
+    </item>
+    
     <item>
       <title>The fast food capital</title>
       <link>http://localhost:1313/post/2020-11-16-the-fast-food-capital/</link>

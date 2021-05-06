@@ -6,7 +6,25 @@
     <description>Recent content in Categories on Sean</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>notes</title>
+      <link>http://localhost:1313/categories/notes/</link>
+      <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/notes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stats</title>
+      <link>http://localhost:1313/categories/stats/</link>
+      <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/stats/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>projects</title>
       <link>http://localhost:1313/categories/projects/</link>
@@ -31,15 +49,6 @@
       <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/categories/maps/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>notes</title>
-      <link>http://localhost:1313/categories/notes/</link>
-      <pubDate>Mon, 13 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/categories/notes/</guid>
       <description></description>
     </item>
     
@@ -76,15 +85,6 @@
       <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/categories/causal-inference/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>stats</title>
-      <link>http://localhost:1313/categories/stats/</link>
-      <pubDate>Sun, 23 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/categories/stats/</guid>
       <description></description>
     </item>
     
