@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sean Maguire">
+<meta name="dcterms.date" content="2022-09-24">
+
+<title>Sean Maguire - Up &amp; running with quarto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Sean Maguire</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sm212"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Up &amp; running with quarto</h1>
+            <p class="subtitle lead">Walking through the process to make a blog with quarto and deploy it on github pages</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">code</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Sean Maguire </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 24, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#initial-setup" id="toc-initial-setup" class="nav-link active" data-scroll-target="#initial-setup">Initial setup</a></li>
+  <li><a href="#folder-structure" id="toc-folder-structure" class="nav-link" data-scroll-target="#folder-structure">Folder structure</a>
+  <ul class="collapse">
+  <li><a href="#making-new-posts-editing-pages" id="toc-making-new-posts-editing-pages" class="nav-link" data-scroll-target="#making-new-posts-editing-pages">Making new posts, editing pages</a></li>
+  </ul></li>
+  <li><a href="#customising-the-blog" id="toc-customising-the-blog" class="nav-link" data-scroll-target="#customising-the-blog">Customising the blog</a>
+  <ul class="collapse">
+  <li><a href="#home-page" id="toc-home-page" class="nav-link" data-scroll-target="#home-page">Home page</a></li>
+  <li><a href="#about-page" id="toc-about-page" class="nav-link" data-scroll-target="#about-page">About page</a></li>
+  <li><a href="#themes-and-titles" id="toc-themes-and-titles" class="nav-link" data-scroll-target="#themes-and-titles">Themes and titles</a></li>
+  </ul></li>
+  <li><a href="#publishing-to-github-pages" id="toc-publishing-to-github-pages" class="nav-link" data-scroll-target="#publishing-to-github-pages">Publishing to github pages</a></li>
+  <li><a href="#updating-your-blog" id="toc-updating-your-blog" class="nav-link" data-scroll-target="#updating-your-blog">Updating your blog</a></li>
+  </ul>
+</nav>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>Quarto is the next version of rmarkdown. It’s fairly new, the aim is for quarto to be able to do everything rmarkdown can do and to be cross platform (so R &amp; python can use it). It’s made by the people at RStudio / Posit so it’s going to be around for a while and is probably worth getting used to! If you’ve used rmarkdown before, you already know quarto, the main difference is the file extensions are now .<strong>q</strong>md instead of .<strong>r</strong>md. Quarto has all the same output formats as rmarkdown - static / interactive documents, word docs, pdfs, slides, books, websites, blogs and so on.<br>
+I recently spent an afternoon moving an old blogdown blog over to quarto. Quarto is <em>much</em> easier to use, though I did run into a couple of very small issues when setting everything up. This post will cover the entire start to finish process of making a blog &amp; getting it onto the internet. All you need is a github account (and a little bit of familiarity with git). Let’s jump in!</p>
+<section id="initial-setup" class="level1">
+<h1>Initial setup</h1>
+<p>First things first, head over to the <a href="https://quarto.org/docs/get-started/">getting started</a> page and download quarto. Quarto is a command line tool, so you’re going to be using the terminal (or powershell if you’re on windows). Once quarto is downloaded, install it with all the default settings and open up a new terminal window. The next few steps are just following the instructions over on the <a href="https://quarto.org/docs/websites/website-blog.html">Creating a Blog</a> page. All you need to do is type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto create<span class="sc">-</span>project <span class="sc">&lt;</span>blog name<span class="sc">&gt;</span> <span class="sc">--</span>type website<span class="sc">:</span>blog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Where <code>&lt;blog name&gt;</code> is whatever you want to name your blog. This will make a folder called <code>&lt;blog name&gt;</code>. Congratulations - you just made a blog! To see the blog, just ask quarto to preview it for you:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>quarto preview <span class="sc">&lt;</span>blog name<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="initial_blog.png" class="img-fluid" data-fig-align="center"> There’s a home page with a list of blogposts, an ‘About’ section in the top right, and links to things like github and twitter. Now that you’ve got a blog, it’s time to start tweaking it to look how you want it to look.</p>
+</section>
+<section id="folder-structure" class="level1">
+<h1>Folder structure</h1>
+<p>Here’s what the <code>&lt;blog name&gt;</code> folder looks like. There’s a consistent structure to the folder which makes it easy to use:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="folder.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>There’s 2 file types:</p>
+<ul>
+<li><code>.qmd</code> - these are the pages &amp; blogposts shown on the blog. <code>index.qmd</code> contains the code used to generate the home page, and <code>about.qmd</code> contains the code used to generate the about page. There’s a folder called <code>posts</code> which is where the individual blogposts live - we’ll come back to that later</li>
+<li><code>.yml</code> - these contain options about the pages. They affect the folder they’re in &amp; any subfolders - we’ll come back to this later as well</li>
+</ul>
+<p>If you go into the <code>posts</code> folder, there’s a <code>_metadata.yml</code> file and 2 folders - one for each blogpost.</p>
+<section id="making-new-posts-editing-pages" class="level2">
+<h2 class="anchored" data-anchor-id="making-new-posts-editing-pages">Making new posts, editing pages</h2>
+<p>Let’s look at the <code>_metadata.yml</code> file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># options specified here will apply to all posts in this folder</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># freeze computational output</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># (see https://quarto.org/docs/projects/code-execution.html#freeze)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>freeze<span class="sc">:</span> true</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Enable banner style title blocks</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">:</span> true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since this is in the <code>posts</code> folder, it will affect every blogpost. There’s not a huge amount in here by default, but there’s a lot of <a href="https://quarto.org/docs/reference/formats/html.html#title-author">options</a> if you want to customise it. One particularly cool option is the <code>freeze: true</code> line - if it’s set to <code>true</code> (the default) then quarto won’t rerun any <code>.qmd</code> files when building the site. This is very handy if you have any code in your blogposts which take a while to run. The options are <code>freeze: true</code>, <code>freeze: false</code> which would rerun every <code>.qmd</code> file every time you build the site, and <code>freeze: auto</code> which will only rerun <code>.qmd</code> files which have changed since the last time the site was built.</p>
+<p>Now on to the posts. Each post needs to have its own folder inside the <code>posts</code> folder. The name of the folder becomes part of the blogpost URL, so make it something short! Inside the folder there <em>always</em> needs to be a file called <code>index.qmd</code>. This is where you’ll write the blogpost. Quarto will look for these <code>index.qmd</code> files when building the site, so it’s important that the name &amp; location of these files is correct. If you have any pictures you want to include in the post, put them in the folder as well.</p>
+<p>Lets make a new post. I’ve made a new folder with a empty <code>index.qmd</code> file, and put in 2 pictures I want to include in the post:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="newpost.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Now all we need to do is add some content to <code>index.qmd</code>. Every <code>.qmd</code> starts with a header, which contains things like the blog title, the author, when the blog was written and so on. Below that is the content of the blog. Here’s what <code>index.qmd</code> looks like after making some edits:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"A new blogpost"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>subtitle<span class="sc">:</span> <span class="st">"A short summary, shown below the blog title on the homepage"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span> <span class="st">"image2.png"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>author<span class="sc">:</span> <span class="st">"Sean Maguire"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>date<span class="sc">:</span> <span class="st">"2022-09-24"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>categories<span class="sc">:</span> [code, blog, quarto]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>This is an intro paragraph.</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>Adding pictures requires a slightly weird line of code<span class="sc">:</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](image1.jpg)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>And another picture</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>[](image2.jpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The header is the lines between <code>---</code>. Most of it’s fairly self explanatory. The 2 ones to mention are <code>image</code>, which determines the picture shown next to the blog on the home page, and <code>categories</code> which are a list of (optional) tags to file the post under.</p>
+</section>
+</section>
+<section id="customising-the-blog" class="level1">
+<h1>Customising the blog</h1>
+<section id="home-page" class="level2">
+<h2 class="anchored" data-anchor-id="home-page">Home page</h2>
+<p>The home page is just like any other blogpost - it has its own <code>index.qmd</code> in the main folder. Here’s how it looks by default:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"blog"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>listing<span class="sc">:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  contents<span class="sc">:</span> posts</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">:</span> <span class="st">"date desc"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> default</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  categories<span class="sc">:</span> true</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  sort<span class="sc">-</span>ui<span class="sc">:</span> false</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  filter<span class="sc">-</span>ui<span class="sc">:</span> false</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>page<span class="sc">-</span>layout<span class="sc">:</span> full</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>title<span class="sc">-</span>block<span class="sc">-</span>banner<span class="sc">:</span> true</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It’s just a header. Quarto builds the rest of the homepage when it builds the site, so you never need to add any content to this file by hand. You might want to change the <code>title</code> to something more imaginative though. The <code>listing</code> section tells quarto how to display the list of blogposts, by default it will show the posts in descending date order, and each post will have the title, an image, the author, the date created, a (optional) subtitle, and a short preview of the first few lines of text from the post. You can edit how this looks by making changes to the entries below <code>listing:</code> - make sure that you use the same level of indentation otherwise quarto will complain! The full list of <code>listing</code> display options are <a href="https://quarto.org/docs/websites/website-listings.html">here</a> if you want to play around with them.</p>
+</section>
+<section id="about-page" class="level2">
+<h2 class="anchored" data-anchor-id="about-page">About page</h2>
+<p>The about page is, just like pretty much everything else on the blog, a <code>.qmd</code> file. The default <code>about.qmd</code> is quite minimal:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"About"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>image<span class="sc">:</span> profile.jpg</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>about<span class="sc">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  template<span class="sc">:</span> jolla</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  links<span class="sc">:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> twitter</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      text<span class="sc">:</span> Twitter</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>twitter.com</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> linkedin</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>      text<span class="sc">:</span> LinkedIn</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>linkedin.com</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="sc">-</span> icon<span class="sc">:</span> github</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      text<span class="sc">:</span> Github</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>      href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>About this blog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This looks very familiar - there’s the usual header where you specify the title and image, then there’s the body below where you’d write the content. One new thing to mention, this page is using a <em>template</em>. Templates tell quarto to display the page differently. So the about page won’t look like a usual blog post and it won’t look like the home page. By default the template includes links to things like twitter and github, but you can delete those if you want.</p>
+</section>
+<section id="themes-and-titles" class="level2">
+<h2 class="anchored" data-anchor-id="themes-and-titles">Themes and titles</h2>
+<p>Now the only things left to customise are things like the blog colours, fonts, titles and so on. These are all site wide options so are found in <code>_quarto.yml</code>, which looks like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> website</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>website<span class="sc">:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  title<span class="sc">:</span> <span class="st">"blog"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  navbar<span class="sc">:</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    right<span class="sc">:</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> about.qmd</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> github</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span> icon<span class="sc">:</span> twitter</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        href<span class="sc">:</span> https<span class="sc">:</span><span class="er">//</span>twitter.com</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>format<span class="sc">:</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  html<span class="sc">:</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    theme<span class="sc">:</span> cosmo</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    css<span class="sc">:</span> styles.css</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The website <code>title</code> is the name shown in the tab, so you might want to change that to something specific to you. After that there’s a bunch of options about the navbar (the bar at the top of each page), by default the navbar will have 3 links on the right hand side - one to the about page, one to github, and one to twitter. Get rid of any you don’t want, and add any new ones you want to add in (following the exact same formatting &amp; indentation).</p>
+<p>Lastly there’s the theme. Quarto blogs come with <a href="https://quarto.org/docs/websites/website-blog.html#themes">25 different themes</a>. The default is <code>cosmo</code>, and changing the theme is extremely easy - just change the <code>theme: cosmo</code> line to whichever theme you want to use. If you know CSS, there’s the option to further customise the theme by adding to the <code>styles.css</code> file.</p>
+</section>
+</section>
+<section id="publishing-to-github-pages" class="level1">
+<h1>Publishing to github pages</h1>
+<p>At this point you’ve made a blog, made a blogpost, and customised the blog to look exactly how you want. Congratulations! The final step is to get your blog out into the world. The easiest way to do this is using github pages.</p>
+<p>The first thing to do is to make a new github repo to store the blog files. Head over to github and make a new repo, it needs to have a specific name - <code>&lt;your github username&gt;.github.io</code> - and it needs to be public. Now we just need to get some files into this repo and we’re done.</p>
+<p>Lets get those files added. You need to tell quarto to render the site into a <code>docs</code> folder. This is a site wide change, so open <code>_quarto.ylm</code> and change the <code>project:</code> section to</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>project<span class="sc">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  type<span class="sc">:</span> website</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">-</span>dir<span class="sc">:</span> docs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now when you render the site, quarto will put all the files into <code>docs</code>. Open up a terminal in your blog folder and type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarto render</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will render all the posts in <code>posts</code>, build the site, and write the output to the <code>docs</code> folder (it’ll make a new folder if this is the first time <code>quarto render</code> has been run). Next we need to make a git repo, tell it to upload files to the github repo we just made, and then push all the files in <code>docs</code>. Go to the terminal again and type:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git init</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>git add docs<span class="sc">/</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">"initial commit"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>All our files are committed and ready to be pushed, we just need to tell git where to push them to - add the github repo you just made and push!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git remote add origin <span class="sc">&lt;</span>url of github repo<span class="sc">&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>git branch <span class="sc">-</span>M main</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>git push <span class="sc">-</span>u origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The final step is to tell github pages to build the site from the <code>docs</code> folder you just uploaded. Go to your <code>&lt;your github username&gt;.github.io</code> repo on github and go on Settings &gt; Pages. Change the Branch section to build the site from the docs folder and you’re done. Your blog is now live! Head over to <code>&lt;your github username&gt;.github.io</code> to see it in all its glory</p>
+<p><img src="gh_pages.png" class="img-fluid"></p>
+</section>
+<section id="updating-your-blog" class="level1">
+<h1>Updating your blog</h1>
+<p>If you make any new posts or changes to your site, you’ll need to push those changes to github before they update on the site. The process you need to follow to update the blog is:</p>
+<ul>
+<li>Once you’ve made changes, preview how the site looks using <code>quarto preview</code></li>
+<li>If you’re happy with how everything looks, render the site to the <code>docs</code> folder using <code>quarto render</code></li>
+<li>Add the changes you just made to <code>docs</code> to git using <code>git add docs/</code></li>
+<li>Commit these changes ready for upload using <code>git commit -m &lt;short message&gt;</code></li>
+<li>Push the updates to github using <code>git push</code></li>
+</ul>
+<p>That’s it!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
