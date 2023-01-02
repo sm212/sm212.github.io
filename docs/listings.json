@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/bash/index.html",
       "/posts/quarto_setup/index.html",
       "/posts/simulating_power_analysis/index.html",
       "/posts/dags_museums_asbos/index.html",
