@@ -123,7 +123,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -192,6 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#making-lots-of-things-at-once" id="toc-making-lots-of-things-at-once" class="nav-link active" data-scroll-target="#making-lots-of-things-at-once">Making lots of things at once</a></li>
   <li><a href="#bash-scripts" id="toc-bash-scripts" class="nav-link" data-scroll-target="#bash-scripts">Bash scripts</a></li>
+  <li><a href="#compressing-videos" id="toc-compressing-videos" class="nav-link" data-scroll-target="#compressing-videos">Compressing videos</a></li>
   <li><a href="#sampling-a-big-csv" id="toc-sampling-a-big-csv" class="nav-link" data-scroll-target="#sampling-a-big-csv">Sampling a big csv</a></li>
   <li><a href="#finding-all-files-with-a-certain-name-pattern" id="toc-finding-all-files-with-a-certain-name-pattern" class="nav-link" data-scroll-target="#finding-all-files-with-a-certain-name-pattern">Finding all files with a certain name pattern</a></li>
   </ul>
@@ -201,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
@@ -209,14 +210,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Bash is (more or less) the language used by the terminal to do things. My bash knowledge is basically zero. I can make folders, change directories, maybe do a couple of git commands, and that’s it.<br>
 Every once in a while I learn how to do something cool in bash - something which would have been really tedious to do another way. The problem is that, after I’ve made bash do something cool, I then <em>immediately</em> forget how to do it. There have been loads of times where I see a problem, go ‘oh! this is real easy to do in bash’, then I stare blankly at a terminal screen for 5 minutes and eventually do something else instead.<br>
 This post is just a collection of bash code I’ve used at some point, maybe with a short explanation of what the code does. I’m hoping that this will eventually become a sort of personalised cheat-sheet for me. Who knows, maybe I’ll actually start to remember some of this stuff…</p>
-<section id="making-lots-of-things-at-once" class="level1">
+<section id="making-lots-of-things-at-once" class="level1 page-columns page-full">
 <h1>Making lots of things at once</h1>
 <p><strong>Problem:</strong> You want to make lots of folders with the pattern <code>name_01</code>, <code>name_02</code>, …, <code>name_10</code>.</p>
 <p><strong>Solution:</strong> This can be done using curly brackets in one line, which is nice because it saves you from needing to do a loop. Here’s the code</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mkdir name_{<span class="dv">01</span>..<span class="dv">10</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The curly bracket is making an array, and bash is automatically looping over it. If you wanted to do the same thing using loops, this would work</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Make sure you remove the folders before trying to make them, otherwise bash will complain. You can get rid of them by doing <code>rm -rf name_*</code>. This will delete every folder with a name <code>name_&lt;something&gt;</code>. It won’t check before deleting them so be careful and check before you run this!</p>
+</div></div><p>The curly bracket is making an array, and bash is automatically looping over it. If you wanted to do the same thing using loops, this would work</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> {<span class="dv">01</span>..<span class="dv">10</span>}; do mkdir name_<span class="sc">$</span>i; done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -241,13 +245,83 @@ This post is just a collection of bash code I’ve used at some point, maybe wit
 </div>
 <p>This is exactly the same as the last command we looked at, but now its more spaced out and a bit easier to read. To run the script just type <code>bash script.sh</code> in the terminal. The only new thing is that variables are now referenced in double quotes like this: <code>"$&lt;variable name&gt;"</code>.</p>
 </section>
-<section id="sampling-a-big-csv" class="level1">
+<section id="compressing-videos" class="level1">
+<h1>Compressing videos</h1>
+<p><strong>Problem:</strong> A video has a very large file size, and you want to make it smaller.</p>
+<p><strong>Solution:</strong> Use <code>ffmpeg</code>. First you’ll need to <a href="https://ffmpeg.org/download.html">download ffmpeg from here</a>, and add <code>ffmpeg</code> to your path so bash can access it. Once everything is set up, go to the directory with the video in and type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ffmpeg <span class="sc">-</span>i input.mp4 <span class="sc">-</span>vcodec libx265 <span class="sc">-</span>crf <span class="dv">28</span> output.mp4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>ffmpeg</code> is a command line tool which processes videos. This will take an <code>input.mp4</code> video and make a new, compressed version called <code>output.mp4</code>. The <code>28</code> sets the level of compression - higher values will make a more compressed video (smaller file size, but lower quality). 28 is a good default number, but try numbers between 24 - 30 and see how the output looks. This example is stolen from <a href="https://unix.stackexchange.com/questions/28803/how-can-i-reduce-a-videos-size-with-ffmpeg">this stackexchange question</a> so go there if you want more info.</p>
+</section>
+<section id="sampling-a-big-csv" class="level1 page-columns page-full">
 <h1>Sampling a big csv</h1>
 <p><strong>Problem:</strong> You have a huge csv, and you want to make a smaller sample to work with</p>
-<p><strong>Solution:</strong> Figure out the number of rows, make a new csv which contains the same headers, then write every 10th row of the original csv to the new csv</p>
+<p><strong>Solution:</strong> Make a new csv which contains the same headers, then write every 10th row of the original csv to the new csv.</p>
+<p>Make a ‘big’ csv to practice on</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">"col1,col2,col3"</span> <span class="sc">&gt;</span> big.csv</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="cf">in</span> {<span class="dv">1</span>..<span class="dv">5000</span>}; do echo <span class="st">"a$i,b$i,c$i"</span> <span class="sc">&gt;</span><span class="er">&gt;</span> big.csv; done</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This uses arrows <code>&gt;</code> to <em>redirect</em> the text output of a command to a file. By default <code>echo</code> will repeat whatever you type into the terminal, putting <code>&gt; big.csv</code> tells bash to write the output to a file called <code>big.csv</code> instead. The <code>for</code> loop then appends 5000 rows to the csv using <code>&gt;&gt;</code> - if you used <code>&gt;</code> here it would overwrite the contents of <code>big.csv</code> each time.</p>
+<p>Just to check this code worked properly, try counting the number of rows</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>wc <span class="sc">-</span>l big.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><code>wc</code> is short for word count - it counts the number of words in a file. The <code>-l</code> flag tells it to count the number of lines instead</p>
+</div></div><p>This includes the header line, so the number is <code>5001</code> instead of <code>5000</code>. You can fix this by removing the header row using <code>tail</code> and then redirecting the output of that command to <code>wc</code> like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tail <span class="sc">-</span>n<span class="sc">+</span><span class="dv">2</span> big.csv <span class="sc">|</span> wc <span class="sc">-</span>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><code>head</code> and <code>tail</code> print out the first and last few rows of a file. The first flag lets you ask for a certain number of rows. The <code>-n+2</code> part in tail tells it to print out everything from row 2 to the end of the file</p>
+</div></div><p>The pipe <code>|</code> lets you chain function calls, the result is executed left to right (first do <code>tail</code>, then <code>wc</code>).</p>
+<p>Now that everything’s set up, you just need to do the steps mentioned in the solution. First write the header out to a new file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>head <span class="sc">-</span><span class="dv">1</span> big.csv <span class="sc">&gt;</span> small.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And write out every 10th row</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tail <span class="sc">-</span>n<span class="sc">+</span><span class="dv">2</span> big.csv <span class="sc">|</span> awk <span class="st">'{if (NR % 10 == 0) print $1}'</span> <span class="sc">&gt;</span><span class="er">&gt;</span> small.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>awk</code> is a tool for working with csv files. The general syntax is <code>awk '{some_code}' file.csv</code>. The single quotes and curly brackets are needed, otherwise the code won’t run and you’ll get a syntax error.</p>
 </section>
-<section id="finding-all-files-with-a-certain-name-pattern" class="level1">
+<section id="finding-all-files-with-a-certain-name-pattern" class="level1 page-columns page-full">
 <h1>Finding all files with a certain name pattern</h1>
+<p><strong>Problem:</strong> You have lots of folders &amp; subfolders, and you want to find all files with a certain name in all these folders.</p>
+<p><strong>Solution:</strong> Use <code>find</code>. As an example, download some monthly police data from <a href="https://data.police.uk/data/fetch/f2dde954-daac-4bdd-b9ed-dad4ba9c9de9/">police.data.uk</a>. The link should download crime data by month for each police force area in England. There’s a folder for each month, and inside each folder is a bunch of csv’s with crime data for each police force area. I’ve put everything in a folder called <code>police</code> which looks like this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>.</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="sc">|--</span> police</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span>   <span class="er">|</span><span class="sc">--</span> <span class="dv">2019-12</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span>   <span class="er">|</span>   <span class="er">|</span><span class="dv">2019-12</span><span class="sc">-</span>avon<span class="sc">-</span>and<span class="sc">-</span>somerset<span class="sc">-</span>street.csv</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span>   <span class="er">|</span>   <span class="er">|</span><span class="dv">2019-12</span><span class="sc">-</span>bedfordshire<span class="sc">-</span>street.csv</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span>   <span class="er">|</span>   <span class="er">|</span>...</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="sc">|</span>   <span class="er">|</span>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you want to find the locations of all the Essex police force data you just do</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>find police <span class="sc">-</span>name <span class="st">"*essex*.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This tells <code>find</code> to look in the <code>police</code> folder for any files with the name like <code>&lt;anything&gt;essex&lt;anything&gt;.csv</code>. Now that you’ve got the files you probably want to do something with them. <code>find</code> has an <code>exec</code> option which lets you execute code on the list of files returned by <code>find</code>. For example you can ask <code>find</code> to print the contents of each csv to the terminal</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>find police <span class="sc">-</span>name <span class="st">"*essex*.csv"</span> <span class="sc">-</span>exec cat {} \;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This will run <code>cat</code> on each element of the list. The elements of the list are represented by the placeholder <code>{}</code>, and you need to end the line with a semicolon so bash knows you’re finished typing in the command (the semicolon needs to be escaped with the <code>\</code> because bash is a bit particular).</p>
+<p>As a more realistic example, you might want to combine all the Essex data into a single csv. First make a file containing just the header</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>head <span class="sc">-</span><span class="dv">1</span> police<span class="sc">/</span><span class="dv">2019-12</span><span class="sc">/</span><span class="dv">2019-12</span><span class="sc">-</span>avon<span class="sc">-</span>and<span class="sc">-</span>somerset<span class="sc">-</span>street.csv <span class="sc">&gt;</span> essex_crime.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>The files all have the same header, so it doesn’t matter which csv you get it from. I’ve taken it from Avon &amp; Somerset because it’s the first police force alphabetically</p>
+</div></div><p>And append the Essex data (ignoring the header row) to this file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>find police <span class="sc">-</span>name <span class="st">"*essex*.csv"</span> <span class="sc">-</span>exec tail <span class="sc">-</span>n<span class="sc">+</span><span class="dv">2</span> {} <span class="sc">&gt;</span><span class="er">&gt;</span> essex_crime.csv \;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
